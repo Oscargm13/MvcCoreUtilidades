@@ -1,9 +1,13 @@
 using MvcCoreUtilidades.Herlpers;
+using MvcCoreUtilidades.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<RepositoryCoches>();
 builder.Services.AddSingleton<HelperPathProvider>();
+
+builder.Services.AddSession();
 
 builder.Services.AddHttpContextAccessor();
 
@@ -29,7 +33,7 @@ app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")

@@ -1,0 +1,16 @@
+﻿@model Coche
+<h1 style="color:blue">Coche Details</h1>
+
+@if (Model == null)
+{
+    <h2 style="color:red">
+        No existe el Coche buscado
+    </h2>
+}
+else
+{
+    <h2 style="color:fuchsia">
+        @Model.Marca @Model.Modelo
+    </h2>
+    <img src="@Model.Imagen" style="width: 250px; height: 200px" />
+}
